@@ -1,0 +1,2 @@
+class Empleado:
+    def __
