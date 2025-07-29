@@ -45,6 +45,14 @@ while True:
                 "correo": contacto.correo
             }
         }
+
     elif opcion == "2":
+        for codigo, datos in empleados.items():
+            print(f"Codigo: {codigo}, Nombre: {datos['nombre']}, Departamento: {datos['departamento']}, Antiguedad: {datos['antiguedad']}")
+            for clave, valor in datos['evaluacion'].items():
+                print(f"  {clave.capitalize()}: {valor}")
+            for clave, valor in datos['contacto'].items():
+                print(f"  {clave.capitalize()}: {valor}")
+
     elif opcion == "3":
 
