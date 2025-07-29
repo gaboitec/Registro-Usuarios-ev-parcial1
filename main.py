@@ -72,9 +72,11 @@ while True:
         for codigo, datos in empleados.items():
             print(f"Codigo: {codigo}, Nombre: {datos['nombre']}, Departamento: {datos['departamento']}, Antiguedad: {datos['antiguedad']}")
             for clave, valor in datos['evaluacion'].items():
-                print(f"  {clave}: {valor}")
+                print("     Evaluacion:")
+                print(f"        {clave}: {valor}")
             for clave, valor in datos['contacto'].items():
-                print(f"  {clave}: {valor}")
+                print("     Contacto:")
+                print(f"        {clave}: {valor}")
 
     elif opcion == "3":
         print("## BUSCAR EMPLEADO ##")
