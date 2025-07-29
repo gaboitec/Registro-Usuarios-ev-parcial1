@@ -7,12 +7,16 @@ class Empleado:
 
 
 class Evaluacion:
-    def __init__(self, puntualidad, equipo, productividad, observacion, estado):
+    def __init__(self, puntualidad, equipo, productividad, observacion):
         self.puntualidad = puntualidad
         self.equipo = equipo
         self.productividad = productividad
+        self.promedio = (puntualidad + equipo + productividad) / 3
         self.observacion = observacion
-        self.estado = estado
+        if self.promedio >= 7:
+            self.estado = "Satisfactorio"
+        else:
+            self.estado = "Mejorar"
 
 class Contacto:
     def __init__(self, telefono, correo):
