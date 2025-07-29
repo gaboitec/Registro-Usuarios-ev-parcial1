@@ -1,6 +1,24 @@
 import clases
 empleados = {}
 
+def buscar_empleado(codigo):
+    if codigo in empleados:
+        empleado = empleados[codigo]
+
+        print(f"Codigo: {codigo}, Nombre: {empleado['nombre']}, Departamento: {empleado['departamento']}, Antiguedad: {empleado['antiguedad']}")
+        for clave, valor in empleado['evaluacion'].items():
+            print(f"  {clave}: {valor}")
+        for clave, valor in empleado['contacto'].items():
+            print(f"  {clave.capitalize()}: {valor}")
+    else:
+        print("Empleado no encontrado.")
+
+def satisfactorios():
+    for codigo, datos in empleados.items():
+        if datos['evaluacion']['estado'] == "Satisfactorio":
+            print(f"Codigo: {codigo}, Nombre: {datos['nombre']}, Promedio: {datos['evaluacion']['promedio']}")
+
+
 while True:
     print("\n## MENU EMPLEADOS ##")
     print("1. Registrar nuevo empleado")
@@ -8,7 +26,8 @@ while True:
     print("3. Buscar empleado")
     print("4. Mostrar empleados satisfactorios")
     print("5. Empleado con mejor promedio")
-    opcion = input("Eliga una opcion")
+    print("0. Salir")
+    opcion = input("Eliga una opcion: ")
 
     if opcion == "1":
         empleado = clases.Empleado(
@@ -55,4 +74,17 @@ while True:
                 print(f"  {clave.capitalize()}: {valor}")
 
     elif opcion == "3":
+        print("## BUSCAR EMPLEADO ##")
+        codigo = input("Ingrese el codigo del empleado a buscar: ")
+        buscar_empleado(codigo)
 
+    elif opcion == "4":
+        print("## EMPLEADOS SATISFACTORIOS ##")
+        satisfactorios()
+    elif opcion == "5":
+        print("mejor promedio")
+    elif opcion == "0":
+        print("Saliendo del programa...")
+        break
+    else:
+        print("\nIngrese una opcion valida")
