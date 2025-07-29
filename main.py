@@ -39,7 +39,7 @@ while True:
                 input("Ingrese el departamento del empleado: "),
                 input("Ingrese la antiguedad del empleado: "))
 
-            print("INGRESANDO EVALUACION DEL EMPLEADO")
+            print("INGRESANDO EVALUACION DEL EMPLEADO:")
             evaluacion = clases.Evaluacion(
                 int(input("Ingrese la evaluacion de puntualidad(0-10): ")),
                 int(input("Ingrese la evaluacion de trabajo en equipo(0-10): ")),
@@ -71,11 +71,11 @@ while True:
     elif opcion == "2":
         for codigo, datos in empleados.items():
             print(f"Codigo: {codigo}, Nombre: {datos['nombre']}, Departamento: {datos['departamento']}, Antiguedad: {datos['antiguedad']}")
+            print("     Evaluacion:")
             for clave, valor in datos['evaluacion'].items():
-                print("     Evaluacion:")
                 print(f"        {clave}: {valor}")
+            print("     Contacto:")
             for clave, valor in datos['contacto'].items():
-                print("     Contacto:")
                 print(f"        {clave}: {valor}")
 
     elif opcion == "3":
