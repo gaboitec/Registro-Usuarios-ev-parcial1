@@ -30,48 +30,51 @@ while True:
     opcion = input("Eliga una opcion: ")
 
     if opcion == "1":
-        empleado = clases.Empleado(
-            input("Ingrese el codigo del empleado: "),
-            input("Ingrese el nombre del empleado: "),
-            input("Ingrese el departamento del empleado: "),
-            input("Ingrese la antiguedad del empleado: "))
+        cantidad = int(input("Cuantos empleados desea registrar?: "))
+        for i in range(cantidad):
+            print(f"\n## REGISTRO DE EMPLEADO {i + 1} ##")
+            empleado = clases.Empleado(
+                input("Ingrese el codigo del empleado: "),
+                input("Ingrese el nombre del empleado: "),
+                input("Ingrese el departamento del empleado: "),
+                input("Ingrese la antiguedad del empleado: "))
 
-        print("INGRESANDO EVALUACION DEL EMPLEADO")
-        evaluacion = clases.Evaluacion(
-            int(input("Ingrese la evaluacion de puntualidad(0-10): ")),
-            int(input("Ingrese la evaluacion de trabajo en equipo(0-10): ")),
-            int(input("Ingrese la evaluacion de productividad(0-10): ")),
-            input("Ingrese las observaciones: "))
+            print("INGRESANDO EVALUACION DEL EMPLEADO")
+            evaluacion = clases.Evaluacion(
+                int(input("Ingrese la evaluacion de puntualidad(0-10): ")),
+                int(input("Ingrese la evaluacion de trabajo en equipo(0-10): ")),
+                int(input("Ingrese la evaluacion de productividad(0-10): ")),
+                input("Ingrese las observaciones: "))
 
-        contacto = clases.Contacto(
-            input("Ingrese el telefono de contacto: "),
-            input("Ingrese el correo de contacto: "))
-        
-        empleados[empleado.codigo] = {
-            "nombre": empleado.nombre,
-            "departamento": empleado.departamento,
-            "antiguedad": empleado.antiguedad,
-            "evaluacion": {
-                "puntualidad": evaluacion.puntualidad,
-                "equipo": evaluacion.equipo,
-                "productividad": evaluacion.productividad,
-                "promedio": evaluacion.promedio,
-                "observacion": evaluacion.observacion,
-                "estado": evaluacion.estado
-            },
-            "contacto": {
-                "telefono": contacto.telefono,
-                "correo": contacto.correo
-            }
+            contacto = clases.Contacto(
+                input("Ingrese el telefono de contacto: "),
+                input("Ingrese el correo de contacto: "))
+
+            empleados[empleado.get_codigo()] = {
+                "nombre": empleado.get_nombre(),
+                "departamento": empleado.get_departamento(),
+                "antiguedad": empleado.get_antiguedad(),
+                "evaluacion": {
+                    "puntualidad": evaluacion.get_puntualidad(),
+                    "equipo": evaluacion.get_equipo(),
+                    "productividad": evaluacion.get_productividad(),
+                    "promedio": evaluacion.get_promedio(),
+                    "observacion": evaluacion.get_observacion(),
+                    "estado": evaluacion.get_estado()
+                },
+                "contacto": {
+                    "telefono": contacto.get_telefono(),
+                    "correo": contacto.get_correo()
+                }
         }
 
     elif opcion == "2":
         for codigo, datos in empleados.items():
             print(f"Codigo: {codigo}, Nombre: {datos['nombre']}, Departamento: {datos['departamento']}, Antiguedad: {datos['antiguedad']}")
             for clave, valor in datos['evaluacion'].items():
-                print(f"  {clave.capitalize()}: {valor}")
+                print(f"  {clave}: {valor}")
             for clave, valor in datos['contacto'].items():
-                print(f"  {clave.capitalize()}: {valor}")
+                print(f"  {clave}: {valor}")
 
     elif opcion == "3":
         print("## BUSCAR EMPLEADO ##")
